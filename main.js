@@ -4,14 +4,14 @@ import './style.css';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
 );
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('#bg'),
+    canvas: document.querySelector('#bg'),
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -37,12 +37,12 @@ scene.add(pointLight, ambientLight);
 
 //Add avatar texture
 const gabeTexture = new THREE.TextureLoader().load(
-  './images/yellow-bg-gabe-square.jpg'
+    '/yellow-bg-gabe-square.jpg'
 );
 
 const gabe = new THREE.Mesh(
-  new THREE.BoxGeometry(3, 3, 3),
-  new THREE.MeshBasicMaterial({ map: gabeTexture })
+    new THREE.BoxGeometry(3, 3, 3),
+    new THREE.MeshBasicMaterial({ map: gabeTexture })
 );
 
 scene.add(gabe);
@@ -51,34 +51,34 @@ gabe.position.x = 2;
 
 //Add scroll camera move
 function moveCamera() {
-  const t = document.body.getBoundingClientRect().top;
+    const t = document.body.getBoundingClientRect().top;
 
-  // gabe.rotation.y += 0.03;
-  // gabe.rotation.z += 0.03;
-  gabe.rotation.y += 0.03;
+    // gabe.rotation.y += 0.03;
+    // gabe.rotation.z += 0.03;
+    gabe.rotation.y += 0.03;
 
-  camera.position.z = t * -0.0026;
-  camera.position.x = t * -0.002;
-  camera.rotation.y = t * -0.0002;
+    camera.position.z = t * -0.0026;
+    camera.position.x = t * -0.002;
+    camera.rotation.y = t * -0.0002;
 }
 document.body.onscroll = moveCamera;
 moveCamera();
 
 //Add background image
-const bgImage = new THREE.TextureLoader().load('./images/dark-bg.png');
+const bgImage = new THREE.TextureLoader().load('/dark-bg.png');
 scene.background = bgImage;
 
 //Rendering the cube, so it actually shows up in the browser
 function animate() {
-  requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 
-  // gabe.rotation.x += 0.01;
-  // gabe.rotation.y += 0.01;
+    // gabe.rotation.x += 0.01;
+    // gabe.rotation.y += 0.01;
 
-  // controls.update();
-  // pointLightHelper.update();
+    // controls.update();
+    // pointLightHelper.update();
 
-  renderer.render(scene, camera);
+    renderer.render(scene, camera);
 }
 
 animate();
