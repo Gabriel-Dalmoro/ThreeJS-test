@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+@layer components {
+  .bg-forest-leaves {
+    background-image: url('/forest-leaves.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .bg-leaves-mask {
+    background-image: url('/leaves-mask.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }  
+}
